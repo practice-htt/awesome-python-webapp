@@ -63,13 +63,13 @@ class FloatField(Field):
 			kw['ddl'] = 'real'
 		super(FloatField, self).__init__(**kw)
 
-class BoolenField(Field):
+class BooleanField(Field):
 	def __init__(self, **kw):
 		if not 'default' in kw:
 			kw['default'] = False
 		if not 'ddl' in kw:
 			kw['ddl'] = 'bool'
-		super(BoolenField, self).__init__(**kw)
+		super(BooleanField, self).__init__(**kw)
 
 class TextField(Field):
 	def __init__(self, **kw):
@@ -253,14 +253,14 @@ class Model(dict):
 	# a = Field(), b = Field()
 	# a._count == b._count
 
-class User(Model):
-	id = IntegerField(primary_key=True)
-	name = StringField()
-	email = StringField(updatable=False)
-	passwd = StringField(default=lambda: '******')
-	last_modified = FloatField()
-	def pre_insert(self):
- 		self.last_modified = time.time()
+# class User(Model):
+# 	id = IntegerField(primary_key=True)
+# 	name = StringField()
+# 	email = StringField(updatable=False)
+# 	passwd = StringField(default=lambda: '******')
+# 	last_modified = FloatField()
+# 	def pre_insert(self):
+#  		self.last_modified = time.time()
 
 # attr_dict = dict(id = IntegerField(primary_key=True), name = StringField(), email = StringField(updatable=False),
 # 	passwd = StringField(default=lambda: '******'), last_modified = FloatField(),
